@@ -3,7 +3,13 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors'; 
 
+// routers
+import postRoutes from './routes/posts.js'; 
+
 const app = express(); 
+
+// every route inside of the postRoutes will start with posts
+app.use('/posts', postRoutes);
 
 // general setup 
    // 30mbs because images can be quite big 
