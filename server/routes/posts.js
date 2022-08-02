@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getPosts } from '../controllers/posts.js';
+import { getPosts, createPost } from '../controllers/posts.js';
 
 const router = express.Router();
 
@@ -9,5 +9,6 @@ const router = express.Router();
    // res = response
       // reached through http://localhost:5000/posts
 router.get('/', getPosts)
+router.post('/', createPost)
 
 export default router; 
