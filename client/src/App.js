@@ -28,7 +28,7 @@ const App = () => {
                alignItems: 'center',
                padding: '10px 0px'
             }}>
-               <Typography mr={2} variant="h2" fontWeight={600} color="secondary" align="center" component={"h1"}>Memor</Typography>
+               <Typography mr={2} variant="h2" fontWeight={600} color="secondary" align="center" component={"h1"}>MEMORee</Typography>
                <img src={memories} alt="memor" height="100" />
             </AppBar>
 
