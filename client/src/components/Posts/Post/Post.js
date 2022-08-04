@@ -14,7 +14,7 @@ const Post = ({ post, setCurrentID }) => {
          </div>
 
          <div>
-            <Button style={{color: 'white'}} size="sm" onClick={() => setCurrentID(post._id)}>
+            <Button color="secondary" size="sm" onClick={() => setCurrentID(post._id)}>
                <FiMoreHorizontal />
             </Button>
          </div>
@@ -27,7 +27,8 @@ const Post = ({ post, setCurrentID }) => {
          </div>
 
          <CardContent>
-            <Typography variant="h5" gutterBottom>{post.message}</Typography>
+            <Typography variant="h4">{post.title}</Typography>
+            <Typography variant="body1" gutterBottom>{post.message}</Typography>
          </CardContent>
 
          <CardActions>

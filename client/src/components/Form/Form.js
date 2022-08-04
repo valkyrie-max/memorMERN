@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper } from '@mui/material'; 
 import FileBase from 'react-file-base64';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { createPost, updatePost } from '../../actions/posts';
 
@@ -13,7 +13,9 @@ const Form = ({ currentID, setCurrentID }) => {
       tags: '',
       selectedFile: ''
    });
+   const post = useSelector((state) => currentID ? state.posts.find((p) => p._id === currentID) : null);
    const dispatch = useDispatch();
+
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -29,6 +31,10 @@ const Form = ({ currentID, setCurrentID }) => {
 
    }
 
+   useEffect(() => {
+      if (post) setPostData(post); 
+   }, [post])
+   
 
    return(
       <Paper>
