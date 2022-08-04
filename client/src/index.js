@@ -1,7 +1,5 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-// import ReactDOM from 'react-dom';
-
 // going to keep track of the global store, allows us to access to access the store anywhere inside of the app 
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
@@ -11,6 +9,7 @@ import thunk from 'redux-thunk';
 import reducers from './reducers'
 
 import App from './App';
+import './index.css'
 
 const store = configureStore({reducer: reducers}, compose(applyMiddleware(thunk))); 
 
