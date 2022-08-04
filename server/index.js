@@ -8,14 +8,14 @@ import postRoutes from './routes/posts.js';
 
 const app = express(); 
 
-// every route inside of the postRoutes will start with posts
-app.use('/posts', postRoutes);
-
 // general setup 
    // 30mbs because images can be quite big 
 app.use(bodyParser.json({ limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors()); 
+
+// every route inside of the postRoutes will start with posts
+app.use('/posts', postRoutes);
 
 // mongodb setup
    // using mongodb atlas version < hosting db on their cloud
