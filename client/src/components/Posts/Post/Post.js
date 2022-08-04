@@ -3,7 +3,7 @@ import { Card, CardActions, CardContent, CardMedia, Button, Typography} from '@m
 import { FiMoreHorizontal, FiThumbsUp, FiTrash } from "react-icons/fi";
 import moment from 'moment';
 
-const Post = ({ post }) => {
+const Post = ({ post, setCurrentID }) => {
    return(
       <Card>
          <CardMedia component="img" height="140" image={post.selectedFile} title={post.title} />
@@ -14,7 +14,7 @@ const Post = ({ post }) => {
          </div>
 
          <div>
-            <Button style={{color: 'white'}} size="sm" onClick={() => {}}>
+            <Button style={{color: 'white'}} size="sm" onClick={() => setCurrentID(post._id)}>
                <FiMoreHorizontal />
             </Button>
          </div>

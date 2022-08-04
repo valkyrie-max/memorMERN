@@ -5,7 +5,7 @@ import { Grid, CircularProgress } from '@mui/material';
 
 import Post from './Post/Post';
 
-const Posts = () => {
+const Posts = ({ setCurrentID }) => {
    const posts = useSelector((state) => state.posts);
 
    console.log(posts)
@@ -15,7 +15,7 @@ const Posts = () => {
             {
                posts.map((post) => (
                   <Grid key={post._id} item xs={12} sm={6}>
-                     <Post post={post} />
+                     <Post post={post} setCurrentID={setCurrentID} />
                   </Grid>
                ))
             }
