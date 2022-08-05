@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper } from '@mui/material'; 
 import FileBase from 'react-file-base64';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { createPost } from '../../actions/posts';
+import { createPost, updatePost } from '../../actions/posts';
 
-const Form = () => {
+const Form = ({ currentID, setCurrentID }) => {
    const [postData, setPostData] = useState({
       creator: '',
       title: '',
@@ -13,22 +13,33 @@ const Form = () => {
       tags: '',
       selectedFile: ''
    });
+   const post = useSelector((state) => currentID ? state.posts.find((p) => p._id === currentID) : null);
    const dispatch = useDispatch();
+
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(createPost(postData));
+
+      if (currentID) {
+         dispatch(updatePost(currentID, postData));
+      } else {
+         dispatch(createPost(postData));
+      }
    }
 
    const clear = () => {
 
    }
 
+   useEffect(() => {
+      if (post) setPostData(post); 
+   }, [post])
+   
 
    return(
       <Paper>
          <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-            <Typography variant="h6" component={"div"}>Create your own MEMORee :)</Typography>
+            {currentID ? (<Typography variant="h6" component={"div"}>Edit your own MEMORee :)</Typography>) : (<Typography variant="h6" component={"div"}>Create your own MEMORee :)</Typography>)}
             <div className='formFields'>
                <TextField name="creator" variant="outlined" label="Creator" fullWidth value={postData.creator}onChange={(e) => setPostData({ ...postData, creator: e.target.value })}/>
                <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title}onChange={(e) => setPostData({ ...postData, title: e.target.value })}/>
