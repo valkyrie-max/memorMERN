@@ -4,7 +4,7 @@ import { FiMoreHorizontal, FiThumbsUp, FiTrash } from "react-icons/fi";
 import moment from 'moment';
 
 import { useDispatch } from 'react-redux';
-import { deletePost  } from '../../../actions/posts'; 
+import { deletePost, likePost  } from '../../../actions/posts'; 
 
 
 const Post = ({ post, setCurrentID }) => {
@@ -38,7 +38,7 @@ const Post = ({ post, setCurrentID }) => {
          </CardContent>
 
          <CardActions>
-            <Button size="small" color="secondary" onClick={() => {}}>
+            <Button size="small" color="secondary" onClick={() => dispatch(likePost(post._id))}>
                <FiThumbsUp />
                Like
                {post.likeCount}
