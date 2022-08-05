@@ -39,7 +39,7 @@ const Form = ({ currentID, setCurrentID }) => {
    return(
       <Paper>
          <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-            <Typography variant="h6" component={"div"}>Create your own MEMORee :)</Typography>
+            {currentID ? (<Typography variant="h6" component={"div"}>Edit your own MEMORee :)</Typography>) : (<Typography variant="h6" component={"div"}>Create your own MEMORee :)</Typography>)}
             <div className='formFields'>
                <TextField name="creator" variant="outlined" label="Creator" fullWidth value={postData.creator}onChange={(e) => setPostData({ ...postData, creator: e.target.value })}/>
                <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title}onChange={(e) => setPostData({ ...postData, title: e.target.value })}/>
