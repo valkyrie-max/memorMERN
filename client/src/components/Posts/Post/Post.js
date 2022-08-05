@@ -3,7 +3,13 @@ import { Card, CardActions, CardContent, CardMedia, Button, Typography} from '@m
 import { FiMoreHorizontal, FiThumbsUp, FiTrash } from "react-icons/fi";
 import moment from 'moment';
 
+import { useDispatch } from 'react-redux';
+import { deletePost  } from '../../../actions/posts'; 
+
+
 const Post = ({ post, setCurrentID }) => {
+   const dispatch = useDispatch();
+
    return(
       <Card>
          <CardMedia component="img" height="140" image={post.selectedFile} title={post.title} />
@@ -37,7 +43,7 @@ const Post = ({ post, setCurrentID }) => {
                Like
                {post.likeCount}
             </Button>
-            <Button size="small" color="secondary" onClick={() => {}}>
+            <Button size="small" color="secondary" onClick={() => dispatch(deletePost(post._id))}>
                <FiTrash />
                Delete
             </Button>
